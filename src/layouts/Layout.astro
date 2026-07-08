@@ -1,30 +1,37 @@
 ---
 import '../styles/globals.css';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 interface Props {
-  title: string;
+  title?: string;
+  description?: string;
 }
 
-const { title } = Astro.props;
+const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="description" content="Seco24 - Trabajo listo en 24 horas" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body class="bg-white text-seco-dark">
+  <body class="bg-white text-seco-dark font-body antialiased">
     <slot />
   </body>
 </html>
 
 <style is:global>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
   * {
     margin: 0;
     padding: 0;
@@ -33,9 +40,31 @@ const { title } = Astro.props;
 
   html {
     scroll-behavior: smooth;
+    /* compensar el header fijo al saltar a anclas */
+    scroll-padding-top: 5rem;
   }
 
   body {
     font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Accesibilidad: foco visible claro en elementos interactivos */
+  :where(a, button):focus-visible {
+    outline: 3px solid #13218c;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 </style>

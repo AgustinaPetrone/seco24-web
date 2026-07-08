@@ -1,0 +1,76 @@
+---
+import { Image } from 'astro:assets';
+import ladrillo from '../assets/trabajos/trabajo1-despues.webp';
+import madera from '../assets/placas/placa-madera.webp';
+import texturado from '../assets/placas/placa-revoque.webp';
+import piedra from '../assets/placas/placa-piedra.webp';
+
+const disenos = [
+  {
+    img: ladrillo,
+    nombre: 'Ladrillo rústico',
+    texto: 'El clásico que queda bien en cualquier ambiente.',
+    alt: 'Placa de yeso símil ladrillo rústico instalada en una pared',
+  },
+  {
+    img: madera,
+    nombre: 'Símil madera',
+    texto: 'Vetas talladas para un toque cálido.',
+    alt: 'Placa de yeso con textura símil madera con vetas',
+  },
+  {
+    img: texturado,
+    nombre: 'Texturado',
+    texto: 'Imita el revoque fino, discreto y elegante.',
+    alt: 'Placa de yeso texturada que imita el revoque fino',
+  },
+  {
+    img: piedra,
+    nombre: 'Piedra encastrada',
+    texto: 'Relieve marcado para paredes protagonistas.',
+    alt: 'Placa de yeso con diseño de piedra encastrada en relieve',
+  },
+];
+---
+
+<section id="disenos" class="scroll-mt-20 bg-white py-16 md:py-24">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-3xl font-extrabold tracking-tight text-seco-dark sm:text-4xl">
+        Elegí el estilo de tu pared
+      </h2>
+      <p class="mt-4 text-lg text-seco-gray">
+        Todas nuestras placas cumplen la misma función contra la humedad. La
+        diferencia es solo estética: elegí la que mejor combine con tu ambiente.
+      </p>
+    </div>
+
+    <div class="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-6">
+      {
+        disenos.map((d) => (
+          <article class="group overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-100">
+            <div class="overflow-hidden">
+              <Image
+                src={d.img}
+                alt={d.alt}
+                widths={[300, 600]}
+                sizes="(max-width: 1024px) 45vw, 260px"
+                class="aspect-square w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                loading="lazy"
+              />
+            </div>
+            <div class="p-4">
+              <h3 class="font-bold text-seco-dark">{d.nombre}</h3>
+              <p class="mt-1 text-sm text-seco-gray">{d.texto}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- PENDIENTE: confirmar nombres comerciales reales de cada diseño con el dueño -->
+    <p class="mt-6 text-center text-xs text-seco-gray/70">
+      [PENDIENTE: confirmar nombres comerciales de cada diseño con el dueño]
+    </p>
+  </div>
+</section>

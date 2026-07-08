@@ -18,15 +18,15 @@
 - [x] Crear imagen Open Graph (1200x630) con un antes/después y el logo
 
 ## Fase 2 — Estructura y contenido
-- [ ] Layout base: header fijo con logo + anclas + botón WhatsApp, footer azul con logo blanco
-- [ ] Sección Hero con titular, subtítulo y CTA de WhatsApp (textos en CONTENIDO.md)
-- [ ] Sección "Cómo funciona" (4 pasos)
-- [ ] Sección "Diseños de placas" (galería simple con las 3 texturas)
-- [ ] Sección "Por qué placas de yeso" (beneficios)
-- [ ] Sección "Zona y contacto" + links a Instagram y WhatsApp
-- [ ] Placeholder de sección Testimonios (oculta o con nota [PENDIENTE] hasta tener testimonios reales)
-- [ ] Botón flotante de WhatsApp visible en toda la página
-- [ ] Revisar que todo el copy salga de CONTENIDO.md
+- [x] Layout base: header fijo con logo + anclas + botón WhatsApp, footer azul con logo blanco
+- [x] Sección Hero con titular, subtítulo y CTA de WhatsApp (textos en CONTENIDO.md)
+- [x] Sección "Cómo funciona" (4 pasos)
+- [x] Sección "Diseños de placas" (galería con los 4 diseños)
+- [x] Sección "Por qué placas de yeso" (beneficios)
+- [x] Sección "Zona y contacto" + links a Instagram y WhatsApp
+- [x] Placeholder de sección Testimonios (oculta con nota hasta tener testimonios reales)
+- [x] Botón flotante de WhatsApp visible en toda la página
+- [x] Revisar que todo el copy salga de CONTENIDO.md
 
 ## Fase 3 — Componente estrella: slider antes/después
 - [ ] Componente de comparación con barra deslizable (drag con mouse y touch)

@@ -1,63 +1,33 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import AntesDespues from '../components/AntesDespues.astro';
+import ComoFunciona from '../components/ComoFunciona.astro';
+import Disenos from '../components/Disenos.astro';
+import PorQue from '../components/PorQue.astro';
+import ZonaContacto from '../components/ZonaContacto.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
 ---
 
-<Layout title="Seco24 - Trabajo listo en 24 horas">
-  <header class="sticky top-0 bg-white border-b border-gray-100">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-      <h1 class="text-2xl font-bold text-seco-blue">Seco24</h1>
-      <nav class="hidden md:flex gap-6">
-        <a href="#como-funciona" class="hover:text-seco-blue transition">Cómo funciona</a>
-        <a href="#diseños" class="hover:text-seco-blue transition">Diseños</a>
-        <a href="#contacto" class="hover:text-seco-blue transition">Contacto</a>
-      </nav>
-      <button class="bg-seco-blue text-white px-6 py-2 rounded-lg hover:opacity-90 transition">
-        WhatsApp
-      </button>
-    </div>
-  </header>
-
+<Layout>
+  <span id="top"></span>
+  <Header />
   <main>
-    <!-- Hero -->
-    <section class="bg-gradient-to-br from-seco-blue to-seco-blue/90 text-white py-20 px-4">
-      <div class="max-w-6xl mx-auto text-center">
-        <h2 class="text-5xl font-bold mb-4">Trabajo listo en 24 horas</h2>
-        <p class="text-xl mb-8 text-white/90">Placas de yeso para eliminar humedad en tus paredes</p>
-        <button class="bg-white text-seco-blue font-bold px-8 py-4 rounded-lg hover:bg-gray-100 transition text-lg">
-          Pedí tu presupuesto
-        </button>
-      </div>
-    </section>
+    <Hero />
+    <AntesDespues />
+    <ComoFunciona />
+    <Disenos />
+    <PorQue />
 
-    <!-- Placeholder sections -->
-    <section id="como-funciona" class="py-20 px-4">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold text-center mb-12">Cómo funciona</h2>
-        <p class="text-center text-gray-600">[Contenido en desarrollo]</p>
-      </div>
-    </section>
+    <!--
+      Testimonios: sección oculta hasta tener 2-3 testimonios reales del dueño.
+      NO inventar testimonios (ver CONTENIDO.md). Título previsto: "Lo que dicen nuestros clientes".
+    -->
 
-    <section id="diseños" class="bg-seco-blue-ice py-20 px-4">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold text-center mb-12">Diseños de placas</h2>
-        <p class="text-center text-gray-600">[Contenido en desarrollo]</p>
-      </div>
-    </section>
-
-    <section id="contacto" class="bg-seco-blue text-white py-20 px-4">
-      <div class="max-w-6xl mx-auto text-center">
-        <h2 class="text-3xl font-bold mb-8">Contactá con nosotros</h2>
-        <p class="text-lg mb-8">Escribinos por WhatsApp para pedir tu presupuesto</p>
-        <button class="bg-white text-seco-blue font-bold px-8 py-4 rounded-lg hover:bg-gray-100 transition">
-          Abrir WhatsApp
-        </button>
-      </div>
-    </section>
+    <ZonaContacto />
   </main>
-
-  <footer class="bg-seco-blue text-white py-8 px-4">
-    <div class="max-w-6xl mx-auto text-center">
-      <p>&copy; 2024 Seco24. Trabajo listo en 24 horas.</p>
-    </div>
-  </footer>
+  <Footer />
+  <WhatsAppFloat />
 </Layout>
