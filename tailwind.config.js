@@ -5,13 +5,16 @@ module.exports = {
     extend: {
       colors: {
         seco: {
-          blue: '#2B3990',
-          'blue-light': '#F0F2F8',
-          dark: '#1a1a1a',
+          // Azul institucional exacto extraído del logo (/assets/logo/logo.JPG)
+          blue: '#13218C',
+          'blue-dark': '#0D1868', // hover / profundidad
+          'blue-ice': '#EEF1FB', // fondos de sección alternos (azul hielo casi blanco)
+          gray: '#5B5F6B', // texto secundario (gris cálido)
+          dark: '#1A1A1A', // texto principal
         },
       },
       fontFamily: {
-        display: ['InterDisplay', 'system-ui', 'sans-serif'],
+        display: ['Inter', 'system-ui', 'sans-serif'],
         body: ['Inter', 'system-ui', 'sans-serif'],
       },
     },

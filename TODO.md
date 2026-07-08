@@ -11,11 +11,11 @@
 - [x] Commit inicial
 
 ## Fase 1 — Preparación de assets
-- [ ] Extraer el color azul exacto del logo y documentarlo en tailwind.config
-- [ ] Generar versión del logo con fondo transparente (PNG) para el header; si es viable, vectorizarlo a SVG
-- [ ] Optimizar todas las fotos: convertir a WebP, redimensionar a máx 1600px de ancho
-- [ ] Recortar/alinear los pares antes-después para que coincidan lo mejor posible en encuadre (necesario para el slider)
-- [ ] Crear imagen Open Graph (1200x630) con un antes/después y el logo
+- [x] Extraer el color azul exacto del logo y documentarlo en tailwind.config (#13218C)
+- [x] Generar versión del logo con fondo transparente (PNG) para el header; si es viable, vectorizarlo a SVG (logo azul + blanco transparentes; reloj vectorizado como favicon.svg)
+- [x] Optimizar todas las fotos: convertir a WebP, redimensionar a máx 1600px de ancho (21MB → 972KB)
+- [x] Recortar/alinear los pares antes-después para que coincidan lo mejor posible en encuadre (trabajo1 1600x900, trabajo2 1200x1600)
+- [x] Crear imagen Open Graph (1200x630) con un antes/después y el logo
 
 ## Fase 2 — Estructura y contenido
 - [ ] Layout base: header fijo con logo + anclas + botón WhatsApp, footer azul con logo blanco
