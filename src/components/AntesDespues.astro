@@ -1,10 +1,9 @@
 ---
-import { Image } from 'astro:assets';
-import antes from '../assets/trabajos/trabajo1-antes.webp';
-import despues from '../assets/trabajos/trabajo1-despues.webp';
-
-// NOTA: placeholder estático. En la Fase 3 se reemplaza por el slider
-// interactivo antes/después (barra deslizable con mouse, touch y teclado).
+import CompareSlider from './CompareSlider.astro';
+import t1antes from '../assets/trabajos/trabajo1-antes.webp';
+import t1despues from '../assets/trabajos/trabajo1-despues.webp';
+import t2antes from '../assets/trabajos/trabajo2-antes.webp';
+import t2despues from '../assets/trabajos/trabajo2-despues.webp';
 ---
 
 <section id="trabajos" class="scroll-mt-20 bg-white py-16 md:py-24">
@@ -19,38 +18,25 @@ import despues from '../assets/trabajos/trabajo1-despues.webp';
       </p>
     </div>
 
-    <div class="mt-12 grid gap-4 sm:grid-cols-2">
-      <figure class="relative overflow-hidden rounded-2xl shadow-sm ring-1 ring-gray-100">
-        <Image
-          src={antes}
-          alt="Pared con mancha de humedad antes del tratamiento"
-          widths={[400, 800]}
-          sizes="(max-width: 640px) 90vw, 480px"
-          class="aspect-video w-full object-cover"
-          loading="lazy"
+    <div class="mt-12 grid gap-6 lg:grid-cols-3 lg:items-start lg:gap-8">
+      <div class="lg:col-span-2">
+        <CompareSlider
+          antes={t1antes}
+          despues={t1despues}
+          antesAlt="Pared de living con mancha de humedad antes del tratamiento"
+          despuesAlt="La misma pared seca y renovada con placas de yeso símil ladrillo"
+          sizes="(max-width: 1024px) 90vw, 680px"
         />
-        <figcaption
-          class="absolute left-3 top-3 rounded-md bg-black/60 px-3 py-1 text-sm font-semibold text-white"
-        >
-          Antes
-        </figcaption>
-      </figure>
-
-      <figure class="relative overflow-hidden rounded-2xl shadow-sm ring-1 ring-gray-100">
-        <Image
-          src={despues}
-          alt="La misma pared seca y renovada con placas de yeso símil ladrillo"
-          widths={[400, 800]}
-          sizes="(max-width: 640px) 90vw, 480px"
-          class="aspect-video w-full object-cover"
-          loading="lazy"
+      </div>
+      <div class="mx-auto w-full max-w-sm lg:max-w-none">
+        <CompareSlider
+          antes={t2antes}
+          despues={t2despues}
+          antesAlt="Pared junto a una puerta con humedad antes del tratamiento"
+          despuesAlt="La misma pared junto a la puerta, renovada con placas de yeso"
+          sizes="(max-width: 1024px) 90vw, 340px"
         />
-        <figcaption
-          class="absolute left-3 top-3 rounded-md bg-seco-blue px-3 py-1 text-sm font-semibold text-white"
-        >
-          Después
-        </figcaption>
-      </figure>
+      </div>
     </div>
   </div>
 </section>

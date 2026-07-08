@@ -78,7 +78,7 @@ Todavía pendientes de confirmar con el dueño (mantener `[PENDIENTE]` visible d
 ## Estado del proyecto (progreso y notas para continuar)
 > Bloque de continuidad para Claude Code. Actualizar al cerrar cada fase.
 
-**Progreso:** Fases 0, 1 y 2 ✅ completas y mergeadas a `main` (PR #1). **Próximo: Fase 3** — slider antes/después interactivo (ver `TODO.md`).
+**Progreso:** Fases 0, 1, 2 y 3 ✅ completas (0-2 mergeadas en `main` vía PR #1; Fase 3 en su PR). **Próximo: Fase 4** — pulido, SEO y performance (ver `TODO.md`).
 
 **Levantar el proyecto:**
 - `npm run dev` → **http://localhost:4321** (puerto fijado en `.claude/launch.json`).
@@ -97,7 +97,7 @@ Todavía pendientes de confirmar con el dueño (mantener `[PENDIENTE]` visible d
 **Decisiones de contenido ya tomadas:**
 - Testimonios: sección **omitida (comentada)** en `index.astro` hasta tener testimonios reales.
 - Diseños: **4** (ladrillo, madera, texturado, piedra). "Ladrillo rústico" usa una foto real "después" de un trabajo (no hay product-shot de ladrillo).
-- `AntesDespues.astro` (ancla `#trabajos`) es un **placeholder estático**; la Fase 3 lo reemplaza por el slider interactivo.
+- `AntesDespues.astro` (ancla `#trabajos`) usa `CompareSlider.astro`: slider antes/después con `<input type="range">` transparente (drag mouse/touch + teclado + ARIA) que maneja `--pos` (CSS var) para recortar el overlay. `touch-action: pan-y` para no pelear con el scroll en mobile.
 
 **Flujo de trabajo git:**
 - Repo en GitHub bajo la cuenta **personal AgustinaPetrone**. Deploy futuro: automático desde `main` (Fase 5).
