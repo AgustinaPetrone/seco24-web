@@ -64,9 +64,42 @@ La web NO es un e-commerce. Es una web de confianza y conversión: su único obj
 - ⚠️ Optimizar TODAS las imágenes antes de publicar: convertir a WebP/AVIF, redimensionar (máx ~1600px de ancho), lazy-loading salvo la del hero.
 - Los textos de cada sección están redactados en `CONTENIDO.md` — usarlos, no inventar copy nuevo.
 
-## Datos pendientes de confirmar con el dueño (usar placeholders visibles tipo [PENDIENTE] mientras tanto)
-- Número de WhatsApp del negocio
-- Zona exacta de cobertura
-- Usuario exacto de Instagram
+## Datos del dueño
+Ya provistos (en `CONTENIDO.md`) y aplicados en el código (`src/consts.ts` y secciones):
+- ✅ WhatsApp del negocio: **59899451655** (`wa.me/59899451655` con mensaje pre-cargado)
+- ✅ Instagram: **@seco24horas**
+- ✅ Zona de cobertura: **Montevideo y Canelones**
+
+Todavía pendientes de confirmar con el dueño (mantener `[PENDIENTE]` visible donde aplique):
 - Alcance real de la promesa "24 horas" (¿aplica a cualquier tamaño de pared?)
-- 2-3 testimonios reales
+- 2-3 testimonios reales (la sección Testimonios está oculta hasta tenerlos)
+- Nombres comerciales reales de cada diseño de placa (hay nota `[PENDIENTE]` en la galería)
+
+## Estado del proyecto (progreso y notas para continuar)
+> Bloque de continuidad para Claude Code. Actualizar al cerrar cada fase.
+
+**Progreso:** Fases 0, 1 y 2 ✅ completas y mergeadas a `main` (PR #1). **Próximo: Fase 3** — slider antes/después interactivo (ver `TODO.md`).
+
+**Levantar el proyecto:**
+- `npm run dev` → **http://localhost:4321** (puerto fijado en `.claude/launch.json`).
+- `npm run build` compila y optimiza las imágenes (genera variantes WebP responsive).
+
+**Stack / decisiones técnicas (no romper):**
+- **Tailwind 3.4.x vía PostCSS** (`postcss.config.js` + `tailwind.config.mjs`). ⚠️ NO reintroducir `@astrojs/tailwind`: arrastra Tailwind 4 y rompe el build con el error "trying to use tailwindcss directly as a PostCSS plugin".
+- Azul de marca: **#13218C** (token `seco-blue`). Derivados en Tailwind: `seco-blue-dark`, `seco-blue-ice`, `seco-gray`, `seco-dark`.
+- Imágenes con `astro:assets` (`<Image>`); fuentes ya optimizadas (WebP) en `src/assets/`. Hero con `loading="eager"`, el resto `lazy`.
+
+**Arquitectura del código:**
+- Página única: `src/pages/index.astro` compone los componentes de `src/components/`.
+- `src/consts.ts` = **fuente única de datos** (WhatsApp, Instagram, zona, meta). El link y el mensaje pre-cargado de WhatsApp salen de ahí; `CtaWhatsApp.astro` es el botón reutilizable.
+- Componentes: `Header`, `Hero`, `AntesDespues`, `ComoFunciona`, `Disenos`, `PorQue`, `ZonaContacto`, `Footer`, `WhatsAppFloat`.
+
+**Decisiones de contenido ya tomadas:**
+- Testimonios: sección **omitida (comentada)** en `index.astro` hasta tener testimonios reales.
+- Diseños: **4** (ladrillo, madera, texturado, piedra). "Ladrillo rústico" usa una foto real "después" de un trabajo (no hay product-shot de ladrillo).
+- `AntesDespues.astro` (ancla `#trabajos`) es un **placeholder estático**; la Fase 3 lo reemplaza por el slider interactivo.
+
+**Flujo de trabajo git:**
+- Repo en GitHub bajo la cuenta **personal AgustinaPetrone**. Deploy futuro: automático desde `main` (Fase 5).
+- Trabajar por **rama → push → PR a `main` → merge** (respaldo/checkpoint). Tras el merge, resincronizar `main` local (fast-forward).
+- El CLI `gh` NO está instalado: para abrir PRs usar la API de GitHub (curl) o el link `compare` en el navegador.
