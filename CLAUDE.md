@@ -78,14 +78,14 @@ Todavía pendientes de confirmar con el dueño (mantener `[PENDIENTE]` visible d
 ## Estado del proyecto (progreso y notas para continuar)
 > Bloque de continuidad para Claude Code. Actualizar al cerrar cada fase.
 
-**Progreso:** Fases 0, 1, 2 y 3 ✅ completas (0-2 mergeadas en `main` vía PR #1; Fase 3 en su PR). **Próximo: Fase 4** — pulido, SEO y performance (ver `TODO.md`).
+**Progreso:** Fases 0-4 ✅ completas (0-3 mergeadas en `main`; Fase 4 en su PR). **Próximo: Fase 5** — deploy gratis (ver `TODO.md`). ⚠️ Al deployar, actualizar `site` en `astro.config.mjs` con el dominio real: lo usan canonical, Open Graph y JSON-LD (hoy tiene el placeholder `seco24-web.pages.dev`).
 
 **Levantar el proyecto:**
 - `npm run dev` → **http://localhost:4321** (puerto fijado en `.claude/launch.json`).
 - `npm run build` compila y optimiza las imágenes (genera variantes WebP responsive).
 
 **Stack / decisiones técnicas (no romper):**
-- **Tailwind 3.4.x vía PostCSS** (`postcss.config.js` + `tailwind.config.mjs`). ⚠️ NO reintroducir `@astrojs/tailwind`: arrastra Tailwind 4 y rompe el build con el error "trying to use tailwindcss directly as a PostCSS plugin".
+- **Tailwind 3.4.x vía PostCSS** (`postcss.config.js` + `tailwind.config.js`). ⚠️ NO reintroducir `@astrojs/tailwind`: arrastra Tailwind 4 y rompe el build con el error "trying to use tailwindcss directly as a PostCSS plugin".
 - Azul de marca: **#13218C** (token `seco-blue`). Derivados en Tailwind: `seco-blue-dark`, `seco-blue-ice`, `seco-gray`, `seco-dark`.
 - Imágenes con `astro:assets` (`<Image>`); fuentes ya optimizadas (WebP) en `src/assets/`. Hero con `loading="eager"`, el resto `lazy`.
 
