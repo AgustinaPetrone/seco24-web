@@ -2,7 +2,7 @@
 
 > Instrucciones para Claude Code: trabajar fase por fase, en orden. No avanzar a la siguiente fase sin completar la anterior. Marcar cada ítem con [x] al completarlo. Leer primero `CLAUDE.md` (contexto y restricciones) y `CONTENIDO.md` (textos de cada sección).
 
-> **Estado actual:** Fases 0, 1, 2 y 3 ✅ completas (0-2 mergeadas en `main`; Fase 3 en su PR). **Próximo: Fase 4** (pulido, SEO y performance).
+> **Estado actual:** Fases 0-4 ✅ completas (0-3 mergeadas en `main`; Fase 4 en su PR). **Próximo: Fase 5** (deploy). ⚠️ Al deployar, actualizar `site` en `astro.config.mjs` con el dominio real (lo usan canonical/OG/JSON-LD).
 > Flujo de trabajo: rama por hito → push → PR a `main` → merge. Dev server: `npm run dev` → http://localhost:4321. Ver notas de desarrollo al final de `CLAUDE.md`.
 
 ## Fase 0 — Setup del proyecto
@@ -38,13 +38,13 @@
 - [x] Probar en mobile: el gesto de arrastre no se pelea con el scroll (`touch-action: pan-y`)
 
 ## Fase 4 — Pulido, SEO y performance
-- [ ] Title, meta description, favicon (usar el ícono del reloj del logo)
-- [ ] Open Graph + Twitter cards con la imagen creada en Fase 1
-- [ ] JSON-LD Schema.org LocalBusiness
-- [ ] `alt` en todas las imágenes, jerarquía de headings correcta, una sola H1
-- [ ] Lazy-loading de imágenes (salvo hero), `loading="eager"` solo en hero
-- [ ] Lighthouse: apuntar a 90+ en Performance, Accessibility, Best Practices y SEO en mobile
-- [ ] Revisar `prefers-reduced-motion` y foco visible en elementos interactivos
+- [x] Title, meta description, favicon (reloj del logo en `public/favicon.svg`)
+- [x] Open Graph + Twitter cards con la imagen `public/og-image.jpg` (1200x630)
+- [x] JSON-LD Schema.org LocalBusiness (`HomeAndConstructionBusiness`, subtipo de LocalBusiness) en `Layout.astro`
+- [x] `alt` en todas las imágenes, jerarquía de headings correcta, una sola H1 (auditado)
+- [x] Lazy-loading de imágenes (hero + logo header en `eager` por estar above-the-fold; hero con `fetchpriority="high"`)
+- [x] `prefers-reduced-motion` y foco visible en elementos interactivos (en `Layout.astro`); contraste AA verificado en toda la paleta
+- [ ] Lighthouse 90+ en mobile → **medir sobre el sitio publicado (Fase 5)**; ya aplicadas las buenas prácticas (imágenes WebP responsive, lazy, fetchpriority, meta/OG/JSON-LD, a11y)
 
 ## Fase 5 — Deploy (gratis)
 - [x] Crear repo en GitHub y pushear (repo bajo cuenta personal AgustinaPetrone; Fases 0-2 mergeadas vía PR #1)
