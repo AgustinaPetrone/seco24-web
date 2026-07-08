@@ -1,0 +1,31 @@
+{
+  "name": "seco24-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://AgustinaPetrone@github.com/AgustinaPetrone/seco24-web.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/AgustinaPetrone/seco24-web/issues"
+  },
+  "homepage": "https://github.com/AgustinaPetrone/seco24-web#readme",
+  "dependencies": {
+    "astro": "^7.0.6"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.5.2",
+    "postcss": "^8.5.16",
+    "tailwindcss": "^3.4.19"
+  }
+}
