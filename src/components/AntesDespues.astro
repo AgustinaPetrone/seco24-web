@@ -1,0 +1,56 @@
+---
+import { Image } from 'astro:assets';
+import antes from '../assets/trabajos/trabajo1-antes.webp';
+import despues from '../assets/trabajos/trabajo1-despues.webp';
+
+// NOTA: placeholder estático. En la Fase 3 se reemplaza por el slider
+// interactivo antes/después (barra deslizable con mouse, touch y teclado).
+---
+
+<section id="trabajos" class="scroll-mt-20 bg-white py-16 md:py-24">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-3xl font-extrabold tracking-tight text-seco-dark sm:text-4xl">
+        El cambio habla por sí solo
+      </h2>
+      <p class="mt-4 text-lg text-seco-gray">
+        Deslizá para ver cómo quedan las paredes que tratamos. Trabajos reales, en
+        casas reales.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-4 sm:grid-cols-2">
+      <figure class="relative overflow-hidden rounded-2xl shadow-sm ring-1 ring-gray-100">
+        <Image
+          src={antes}
+          alt="Pared con mancha de humedad antes del tratamiento"
+          widths={[400, 800]}
+          sizes="(max-width: 640px) 90vw, 480px"
+          class="aspect-video w-full object-cover"
+          loading="lazy"
+        />
+        <figcaption
+          class="absolute left-3 top-3 rounded-md bg-black/60 px-3 py-1 text-sm font-semibold text-white"
+        >
+          Antes
+        </figcaption>
+      </figure>
+
+      <figure class="relative overflow-hidden rounded-2xl shadow-sm ring-1 ring-gray-100">
+        <Image
+          src={despues}
+          alt="La misma pared seca y renovada con placas de yeso símil ladrillo"
+          widths={[400, 800]}
+          sizes="(max-width: 640px) 90vw, 480px"
+          class="aspect-video w-full object-cover"
+          loading="lazy"
+        />
+        <figcaption
+          class="absolute left-3 top-3 rounded-md bg-seco-blue px-3 py-1 text-sm font-semibold text-white"
+        >
+          Después
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>

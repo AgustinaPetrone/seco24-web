@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import AntesDespues from '../components/AntesDespues.astro';
+import ComoFunciona from '../components/ComoFunciona.astro';
+import Disenos from '../components/Disenos.astro';
+import PorQue from '../components/PorQue.astro';
+import ZonaContacto from '../components/ZonaContacto.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+---
+
+<Layout>
+  <span id="top"></span>
+  <Header />
+  <main>
+    <Hero />
+    <AntesDespues />
+    <ComoFunciona />
+    <Disenos />
+    <PorQue />
+
+    <!--
+      Testimonios: sección oculta hasta tener 2-3 testimonios reales del dueño.
+      NO inventar testimonios (ver CONTENIDO.md). Título previsto: "Lo que dicen nuestros clientes".
+    -->
+
+    <ZonaContacto />
+  </main>
+  <Footer />
+  <WhatsAppFloat />
+</Layout>
