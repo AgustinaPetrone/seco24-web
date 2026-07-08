@@ -3,12 +3,12 @@
 > Instrucciones para Claude Code: trabajar fase por fase, en orden. No avanzar a la siguiente fase sin completar la anterior. Marcar cada ítem con [x] al completarlo. Leer primero `CLAUDE.md` (contexto y restricciones) y `CONTENIDO.md` (textos de cada sección).
 
 ## Fase 0 — Setup del proyecto
-- [ ] Inicializar proyecto Astro con template mínimo (`npm create astro@latest`)
-- [ ] Agregar Tailwind CSS
-- [ ] Crear estructura de carpetas: `src/components/`, `src/assets/` (mover ahí las imágenes de `/assets/`)
-- [ ] Configurar los colores de marca como tokens de Tailwind (extraer hex exacto del logo)
-- [ ] Verificar que `npm run dev` levanta correctamente
-- [ ] Commit inicial
+- [x] Inicializar proyecto Astro con template mínimo (`npm create astro@latest`)
+- [x] Agregar Tailwind CSS
+- [x] Crear estructura de carpetas: `src/components/`, `src/assets/` (mover ahí las imágenes de `/assets/`)
+- [x] Configurar los colores de marca como tokens de Tailwind (extraer hex exacto del logo)
+- [x] Verificar que `npm run dev` levanta correctamente
+- [x] Commit inicial
 
 ## Fase 1 — Preparación de assets
 - [ ] Extraer el color azul exacto del logo y documentarlo en tailwind.config
