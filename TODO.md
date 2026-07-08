@@ -2,6 +2,9 @@
 
 > Instrucciones para Claude Code: trabajar fase por fase, en orden. No avanzar a la siguiente fase sin completar la anterior. Marcar cada ítem con [x] al completarlo. Leer primero `CLAUDE.md` (contexto y restricciones) y `CONTENIDO.md` (textos de cada sección).
 
+> **Estado actual:** Fases 0, 1 y 2 ✅ completas y mergeadas a `main` (PR #1). **Próximo: Fase 3** (slider antes/después).
+> Flujo de trabajo: rama por hito → push → PR a `main` → merge. Dev server: `npm run dev` → http://localhost:4321. Ver notas de desarrollo al final de `CLAUDE.md`.
+
 ## Fase 0 — Setup del proyecto
 - [x] Inicializar proyecto Astro con template mínimo (`npm create astro@latest`)
 - [x] Agregar Tailwind CSS
@@ -44,7 +47,7 @@
 - [ ] Revisar `prefers-reduced-motion` y foco visible en elementos interactivos
 
 ## Fase 5 — Deploy (gratis)
-- [ ] Crear repo en GitHub y pushear
+- [x] Crear repo en GitHub y pushear (repo bajo cuenta personal AgustinaPetrone; Fases 0-2 mergeadas vía PR #1)
 - [ ] Conectar a Cloudflare Pages (o Vercel/GitHub Pages) con deploy automático desde `main`
 - [ ] Verificar el sitio publicado en el subdominio gratuito
 - [ ] Probar el link de WhatsApp con el número real desde un celular
