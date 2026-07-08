@@ -1,0 +1,160 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  antes: ImageMetadata;
+  despues: ImageMetadata;
+  antesAlt: string;
+  despuesAlt: string;
+  widths?: number[];
+  sizes?: string;
+}
+
+const {
+  antes,
+  despues,
+  antesAlt,
+  despuesAlt,
+  widths = [400, 800, 1200],
+  sizes = '(max-width: 768px) 90vw, 700px',
+} = Astro.props;
+---
+
+<div
+  class="cmp group relative select-none overflow-hidden rounded-2xl shadow-lg ring-1 ring-gray-200"
+  data-compare
+  style="--pos:50%"
+>
+  <!-- Base: Después (define la altura del contenedor) -->
+  <Image
+    src={despues}
+    alt={despuesAlt}
+    widths={widths}
+    sizes={sizes}
+    class="block h-auto w-full"
+    loading="lazy"
+    draggable="false"
+  />
+
+  <!-- Overlay: Antes (recortado según --pos) -->
+  <div
+    class="pointer-events-none absolute inset-0"
+    style="clip-path: inset(0 calc(100% - var(--pos)) 0 0)"
+  >
+    <Image
+      src={antes}
+      alt={antesAlt}
+      widths={widths}
+      sizes={sizes}
+      class="absolute inset-0 h-full w-full object-cover"
+      loading="lazy"
+      draggable="false"
+    />
+  </div>
+
+  <!-- Control (mouse, touch y teclado; accesible) -->
+  <input
+    type="range"
+    min="0"
+    max="100"
+    value="50"
+    step="0.1"
+    class="cmp-range absolute inset-0 z-20 h-full w-full cursor-ew-resize appearance-none bg-transparent"
+    aria-label="Deslizá para comparar la pared antes y después del tratamiento"
+  />
+
+  <!-- UI visible (no captura eventos: pasan al range) -->
+  <div class="cmp-ui pointer-events-none absolute inset-0 z-10">
+    <span
+      class="absolute left-3 top-3 rounded-md bg-black/60 px-2.5 py-1 text-xs font-semibold text-white sm:text-sm"
+      >Antes</span
+    >
+    <span
+      class="absolute right-3 top-3 rounded-md bg-seco-blue px-2.5 py-1 text-xs font-semibold text-white sm:text-sm"
+      >Después</span
+    >
+
+    <!-- Línea divisoria -->
+    <div
+      class="absolute inset-y-0 w-1 -translate-x-1/2 bg-white shadow-[0_0_0_1px_rgba(0,0,0,0.15)]"
+      style="left: var(--pos)"
+    >
+    </div>
+
+    <!-- Handle con flechas -->
+    <div
+      class="cmp-handle absolute top-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-seco-blue shadow-lg ring-1 ring-black/5"
+      style="left: var(--pos)"
+    >
+      <svg
+        class="h-5 w-5"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M9 6l-4 6 4 6M15 6l4 6-4 6"></path>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* El range es transparente y ocupa toda la imagen: click/drag en cualquier
+     lado mueve la comparación. El thumb da el área de agarre. */
+  .cmp-range {
+    /* pan-y: en mobile el scroll vertical funciona; el gesto horizontal
+       mueve la barra sin pelearse con el scroll de la página */
+    touch-action: pan-y;
+    margin: 0;
+  }
+  .cmp-range:focus {
+    outline: none;
+  }
+  .cmp-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 9999px;
+    background: transparent;
+    cursor: ew-resize;
+  }
+  .cmp-range::-moz-range-thumb {
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: 9999px;
+    background: transparent;
+    cursor: ew-resize;
+  }
+  /* Foco por teclado: resaltar el handle */
+  .cmp-range:focus-visible ~ .cmp-ui .cmp-handle {
+    box-shadow:
+      0 0 0 4px rgba(19, 33, 140, 0.55),
+      0 10px 15px -3px rgba(0, 0, 0, 0.25);
+  }
+</style>
+
+<script>
+  function initCompare() {
+    document
+      .querySelectorAll<HTMLElement>('[data-compare]')
+      .forEach((root) => {
+        if (root.dataset.ready) return;
+        const range = root.querySelector<HTMLInputElement>(
+          'input[type="range"]',
+        );
+        if (!range) return;
+        root.dataset.ready = '1';
+        const update = () => root.style.setProperty('--pos', range.value + '%');
+        range.addEventListener('input', update);
+        update();
+      });
+  }
+  initCompare();
+  document.addEventListener('astro:page-load', initCompare);
+</script>

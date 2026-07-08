@@ -2,7 +2,7 @@
 
 > Instrucciones para Claude Code: trabajar fase por fase, en orden. No avanzar a la siguiente fase sin completar la anterior. Marcar cada ítem con [x] al completarlo. Leer primero `CLAUDE.md` (contexto y restricciones) y `CONTENIDO.md` (textos de cada sección).
 
-> **Estado actual:** Fases 0, 1 y 2 ✅ completas y mergeadas a `main` (PR #1). **Próximo: Fase 3** (slider antes/después).
+> **Estado actual:** Fases 0, 1, 2 y 3 ✅ completas (0-2 mergeadas en `main`; Fase 3 en su PR). **Próximo: Fase 4** (pulido, SEO y performance).
 > Flujo de trabajo: rama por hito → push → PR a `main` → merge. Dev server: `npm run dev` → http://localhost:4321. Ver notas de desarrollo al final de `CLAUDE.md`.
 
 ## Fase 0 — Setup del proyecto
@@ -32,10 +32,10 @@
 - [x] Revisar que todo el copy salga de CONTENIDO.md
 
 ## Fase 3 — Componente estrella: slider antes/después
-- [ ] Componente de comparación con barra deslizable (drag con mouse y touch)
-- [ ] Accesible: manejable también con teclado (flechas), etiquetas ARIA
-- [ ] Integrar los 2 trabajos disponibles (trabajo1 y trabajo2/puerta)
-- [ ] Probar en mobile: el gesto de arrastre no debe pelearse con el scroll vertical
+- [x] Componente de comparación con barra deslizable (drag con mouse y touch) → `CompareSlider.astro`
+- [x] Accesible: manejable también con teclado (flechas), etiquetas ARIA (input range nativo + aria-label)
+- [x] Integrar los 2 trabajos disponibles (trabajo1 living 16:9 y trabajo2 puerta 3:4)
+- [x] Probar en mobile: el gesto de arrastre no se pelea con el scroll (`touch-action: pan-y`)
 
 ## Fase 4 — Pulido, SEO y performance
 - [ ] Title, meta description, favicon (usar el ícono del reloj del logo)
