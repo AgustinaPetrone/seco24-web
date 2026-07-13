@@ -2,7 +2,7 @@
 
 > Instrucciones para Claude Code: trabajar fase por fase, en orden. No avanzar a la siguiente fase sin completar la anterior. Marcar cada ítem con [x] al completarlo. Leer primero `CLAUDE.md` (contexto y restricciones) y `CONTENIDO.md` (textos de cada sección).
 
-> **Estado actual:** Fases 0-4 ✅ completas (0-3 mergeadas en `main`; Fase 4 en su PR). **Próximo: Fase 5** (deploy). ⚠️ Al deployar, actualizar `site` en `astro.config.mjs` con el dominio real (lo usan canonical/OG/JSON-LD).
+> **Estado actual:** Fases 0-4 ✅ mergeadas en `main` + **rediseño visual** aplicado (en su PR). **Próximo: Fase 5** (deploy). ⚠️ Al deployar, actualizar `site` en `astro.config.mjs` con el dominio real (lo usan canonical/OG/JSON-LD).
 > Flujo de trabajo: rama por hito → push → PR a `main` → merge. Dev server: `npm run dev` → http://localhost:4321. Ver notas de desarrollo al final de `CLAUDE.md`.
 
 ## Fase 0 — Setup del proyecto

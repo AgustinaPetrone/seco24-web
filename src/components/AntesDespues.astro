@@ -6,37 +6,95 @@ import t2antes from '../assets/trabajos/trabajo2-antes.webp';
 import t2despues from '../assets/trabajos/trabajo2-despues.webp';
 ---
 
-<section id="trabajos" class="scroll-mt-20 bg-white py-16 md:py-24">
-  <div class="mx-auto max-w-6xl px-4">
+<section id="trabajos" class="scroll-mt-24 py-20 md:py-28" data-antes>
+  <div class="mx-auto max-w-6xl px-4 md:px-6">
     <div class="mx-auto max-w-2xl text-center">
-      <h2 class="text-3xl font-extrabold tracking-tight text-seco-dark sm:text-4xl">
+      <h2
+        class="font-display text-4xl font-black tracking-tight text-seco-dark sm:text-[42px]"
+      >
         El cambio habla por sí solo
       </h2>
-      <p class="mt-4 text-lg text-seco-gray">
+      <p class="mt-4 text-lg leading-relaxed text-seco-gray">
         Deslizá para ver cómo quedan las paredes que tratamos. Trabajos reales, en
         casas reales.
       </p>
     </div>
 
-    <div class="mt-12 grid gap-6 lg:grid-cols-3 lg:items-start lg:gap-8">
-      <div class="lg:col-span-2">
+    <!-- Tabs: cambian el par de fotos activo -->
+    <div class="mt-8 flex justify-center gap-3" role="tablist" aria-label="Elegí el trabajo">
+      <button type="button" class="ad-tab ad-tab-active" role="tab" aria-selected="true" data-tab="0">
+        Living
+      </button>
+      <button type="button" class="ad-tab" role="tab" aria-selected="false" data-tab="1">
+        Puerta
+      </button>
+    </div>
+
+    <div class="mx-auto mt-8 max-w-3xl">
+      <div data-panel="0">
         <CompareSlider
           antes={t1antes}
           despues={t1despues}
           antesAlt="Pared de living con mancha de humedad antes del tratamiento"
           despuesAlt="La misma pared seca y renovada con placas de yeso símil ladrillo"
-          sizes="(max-width: 1024px) 90vw, 680px"
+          sizes="(max-width: 768px) 92vw, 760px"
         />
       </div>
-      <div class="mx-auto w-full max-w-sm lg:max-w-none">
+      <div data-panel="1" hidden>
         <CompareSlider
           antes={t2antes}
           despues={t2despues}
           antesAlt="Pared junto a una puerta con humedad antes del tratamiento"
           despuesAlt="La misma pared junto a la puerta, renovada con placas de yeso"
-          sizes="(max-width: 1024px) 90vw, 340px"
+          sizes="(max-width: 768px) 92vw, 480px"
         />
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  .ad-tab {
+    padding: 10px 24px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 700;
+    border: 2px solid #13218c;
+    color: #13218c;
+    background: transparent;
+    cursor: pointer;
+    transition:
+      background-color 0.15s,
+      color 0.15s;
+  }
+  .ad-tab-active {
+    background: #13218c;
+    color: #fff;
+  }
+</style>
+
+<script>
+  function initAntes() {
+    document.querySelectorAll<HTMLElement>('[data-antes]').forEach((section) => {
+      if (section.dataset.ready) return;
+      section.dataset.ready = '1';
+      const tabs = section.querySelectorAll<HTMLButtonElement>('[data-tab]');
+      const panels = section.querySelectorAll<HTMLElement>('[data-panel]');
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          const idx = tab.dataset.tab;
+          tabs.forEach((t) => {
+            const active = t === tab;
+            t.setAttribute('aria-selected', String(active));
+            t.classList.toggle('ad-tab-active', active);
+          });
+          panels.forEach((p) => {
+            p.hidden = p.dataset.panel !== idx;
+          });
+        });
+      });
+    });
+  }
+  initAntes();
+  document.addEventListener('astro:page-load', initAntes);
+</script>

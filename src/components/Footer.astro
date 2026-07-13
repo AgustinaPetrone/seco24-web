@@ -1,46 +1,38 @@
 ---
-import { Image } from 'astro:assets';
-import logoBlanco from '../assets/logo/logo-seco24-blanco.png';
-import { INSTAGRAM_URL, INSTAGRAM_USER, WHATSAPP_URL, WHATSAPP_NUMBER, ZONA } from '../consts';
+import { INSTAGRAM_URL, WHATSAPP_URL, ZONA } from '../consts';
 
 const year = new Date().getFullYear();
 ---
 
-<footer class="bg-seco-blue-dark text-white/80">
-  <div class="mx-auto max-w-6xl px-4 py-12">
-    <div class="flex flex-col items-center gap-8 text-center md:flex-row md:justify-between md:text-left">
-      <div class="flex flex-col items-center gap-3 md:items-start">
-        <Image src={logoBlanco} alt="Seco24 — Trabajo listo en 24 horas" width="120" height="161" class="h-24 w-auto" loading="lazy" />
+<footer class="bg-seco-navy text-white/70">
+  <div class="mx-auto max-w-6xl px-4 py-10 md:px-6">
+    <div
+      class="flex flex-col items-center gap-5 text-center md:flex-row md:justify-between md:gap-4 md:text-left"
+    >
+      <div class="text-sm font-medium text-white/80">
+        Seco24 — Trabajo listo en 24 horas.
       </div>
 
-      <nav class="flex items-center gap-6" aria-label="Redes y contacto">
+      <nav class="flex items-center gap-7" aria-label="Redes y contacto">
         <a
           href={INSTAGRAM_URL}
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 text-sm font-medium transition-colors hover:text-white"
+          class="text-sm font-medium transition-colors hover:text-white"
         >
-          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" aria-hidden="true">
-            <path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58 0-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 01-1.38-.9 3.7 3.7 0 01-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.21 15.58 2.2 15.2 2.2 12s0-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.21 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.5.01-4.74.07-.9.04-1.38.19-1.71.32-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.13.33-.28.81-.32 1.71C3.21 8.5 3.2 8.85 3.2 12s.01 3.5.07 4.74c.04.9.19 1.38.32 1.71.17.43.37.74.69 1.06.32.32.63.52 1.06.69.33.13.81.28 1.71.32 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c.9-.04 1.38-.19 1.71-.32.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.13-.33.28-.81.32-1.71.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.04-.9-.19-1.38-.32-1.71a2.85 2.85 0 00-.69-1.06 2.85 2.85 0 00-1.06-.69c-.33-.13-.81-.28-1.71-.32C15.5 4.01 15.15 4 12 4zm0 3.06A4.94 4.94 0 1012 16.94 4.94 4.94 0 0012 7.06zm0 8.15A3.21 3.21 0 1112 8.8a3.21 3.21 0 010 6.41zm6.28-8.37a1.15 1.15 0 11-2.3 0 1.15 1.15 0 012.3 0z" />
-          </svg>
-          @{INSTAGRAM_USER}
+          Instagram
         </a>
         <a
           href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 text-sm font-medium transition-colors hover:text-white"
+          class="text-sm font-medium transition-colors hover:text-white"
         >
-          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.887 9.884M20.463 3.488A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.548 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413" />
-          </svg>
           WhatsApp
         </a>
       </nav>
-    </div>
 
-    <div class="mt-8 border-t border-white/10 pt-6 text-center text-xs text-white/50">
-      © {year} Seco24 · {ZONA} · Placas antihumedad
+      <div class="text-xs text-white/50">© {year} Seco24 · {ZONA}</div>
     </div>
   </div>
 </footer>
