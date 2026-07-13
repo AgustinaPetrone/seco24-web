@@ -8,13 +8,16 @@ module.exports = {
           // Azul institucional exacto extraído del logo (/assets/logo/logo.JPG)
           blue: '#13218C',
           'blue-dark': '#0D1868', // hover / profundidad
-          'blue-ice': '#EEF1FB', // fondos de sección alternos (azul hielo casi blanco)
-          gray: '#5B5F6B', // texto secundario (gris cálido)
+          'blue-ice': '#EEF1FB', // fondo de sección alterno (azul hielo)
+          bg: '#FBFBFE', // fondo base (blanco con tinte azul sutil)
+          navy: '#151735', // footer (azul muy oscuro)
+          gray: '#5B5F6B', // texto secundario
           dark: '#1A1A1A', // texto principal
         },
       },
       fontFamily: {
-        display: ['Inter', 'system-ui', 'sans-serif'],
+        // Titulares: Archivo (900). Cuerpo: Inter.
+        display: ['Archivo', 'system-ui', 'sans-serif'],
         body: ['Inter', 'system-ui', 'sans-serif'],
       },
     },

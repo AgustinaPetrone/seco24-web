@@ -78,7 +78,7 @@ Todavía pendientes de confirmar con el dueño (mantener `[PENDIENTE]` visible d
 ## Estado del proyecto (progreso y notas para continuar)
 > Bloque de continuidad para Claude Code. Actualizar al cerrar cada fase.
 
-**Progreso:** Fases 0-4 ✅ completas (0-3 mergeadas en `main`; Fase 4 en su PR). **Próximo: Fase 5** — deploy gratis (ver `TODO.md`). ⚠️ Al deployar, actualizar `site` en `astro.config.mjs` con el dominio real: lo usan canonical, Open Graph y JSON-LD (hoy tiene el placeholder `seco24-web.pages.dev`).
+**Progreso:** Fases 0-4 ✅ mergeadas en `main` + **rediseño visual** aplicado (en su PR). **Próximo: Fase 5** — deploy gratis (ver `TODO.md`). ⚠️ Al deployar, actualizar `site` en `astro.config.mjs` con el dominio real: lo usan canonical, Open Graph y JSON-LD (hoy tiene el placeholder `seco24-web.pages.dev`).
 
 **Levantar el proyecto:**
 - `npm run dev` → **http://localhost:4321** (puerto fijado en `.claude/launch.json`).
@@ -86,8 +86,9 @@ Todavía pendientes de confirmar con el dueño (mantener `[PENDIENTE]` visible d
 
 **Stack / decisiones técnicas (no romper):**
 - **Tailwind 3.4.x vía PostCSS** (`postcss.config.js` + `tailwind.config.js`). ⚠️ NO reintroducir `@astrojs/tailwind`: arrastra Tailwind 4 y rompe el build con el error "trying to use tailwindcss directly as a PostCSS plugin".
-- Azul de marca: **#13218C** (token `seco-blue`). Derivados en Tailwind: `seco-blue-dark`, `seco-blue-ice`, `seco-gray`, `seco-dark`.
-- Imágenes con `astro:assets` (`<Image>`); fuentes ya optimizadas (WebP) en `src/assets/`. Hero con `loading="eager"`, el resto `lazy`.
+- Azul de marca: **#13218C** (token `seco-blue`). Otros tokens: `seco-blue-dark`, `seco-blue-ice` (sección alterna), `seco-bg` (fondo base tintado), `seco-navy` (footer), `seco-gray`, `seco-dark`.
+- Tipografía: **Archivo** peso 900 para titulares (`font-display`) + **Inter** para el cuerpo (`font-body`); ambas de Google Fonts.
+- Imágenes con `astro:assets` (`<Image>`); fuentes ya optimizadas (WebP) en `src/assets/`. El resto `lazy`.
 
 **Arquitectura del código:**
 - Página única: `src/pages/index.astro` compone los componentes de `src/components/`.
@@ -97,7 +98,8 @@ Todavía pendientes de confirmar con el dueño (mantener `[PENDIENTE]` visible d
 **Decisiones de contenido ya tomadas:**
 - Testimonios: sección **omitida (comentada)** en `index.astro` hasta tener testimonios reales.
 - Diseños: **4** (ladrillo, madera, texturado, piedra). "Ladrillo rústico" usa una foto real "después" de un trabajo (no hay product-shot de ladrillo).
-- `AntesDespues.astro` (ancla `#trabajos`) usa `CompareSlider.astro`: slider antes/después con `<input type="range">` transparente (drag mouse/touch + teclado + ARIA) que maneja `--pos` (CSS var) para recortar el overlay. `touch-action: pan-y` para no pelear con el scroll en mobile.
+- `AntesDespues.astro` (ancla `#trabajos`) usa `CompareSlider.astro`: slider antes/después con `<input type="range">` transparente (drag mouse/touch + teclado + ARIA) que maneja `--pos` (CSS var) para recortar el overlay. `touch-action: pan-y` para no pelear con el scroll en mobile. Tiene **tabs Living/Puerta** que muestran un slider a la vez (el par oculto usa el atributo `hidden`).
+- **Rediseño visual** aplicado (handoff de la herramienta de diseño de Claude): hero **tipográfico con blobs** (sin foto), tabs en Antes/Después, "Cómo funciona" con **números** en vez de iconos, "Diseños" **sin fondo de tarjeta** (foto + texto), "Por qué" como **bloque azul** con columnas de texto blanco, botones **pill** (100px), footer navy en una fila, botón flotante azul con ícono de WhatsApp. `CtaWhatsApp` es un pill de texto (sin ícono).
 
 **Flujo de trabajo git:**
 - Repo en GitHub bajo la cuenta **personal AgustinaPetrone**. Deploy futuro: automático desde `main` (Fase 5).

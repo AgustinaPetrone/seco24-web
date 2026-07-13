@@ -21,7 +21,7 @@ const {
 ---
 
 <div
-  class="cmp group relative select-none overflow-hidden rounded-2xl shadow-lg ring-1 ring-gray-200"
+  class="cmp group relative select-none overflow-hidden rounded-[28px] shadow-[0_30px_60px_-20px_rgba(19,33,140,0.35)]"
   data-compare
   style="--pos:50%"
 >
@@ -66,38 +66,27 @@ const {
   <!-- UI visible (no captura eventos: pasan al range) -->
   <div class="cmp-ui pointer-events-none absolute inset-0 z-10">
     <span
-      class="absolute left-3 top-3 rounded-md bg-black/60 px-2.5 py-1 text-xs font-semibold text-white sm:text-sm"
+      class="absolute left-4 top-4 rounded-full bg-black/55 px-3.5 py-1.5 text-xs font-bold text-white"
       >Antes</span
     >
     <span
-      class="absolute right-3 top-3 rounded-md bg-seco-blue px-2.5 py-1 text-xs font-semibold text-white sm:text-sm"
+      class="absolute right-4 top-4 rounded-full bg-seco-blue/85 px-3.5 py-1.5 text-xs font-bold text-white"
       >Después</span
     >
 
     <!-- Línea divisoria -->
     <div
-      class="absolute inset-y-0 w-1 -translate-x-1/2 bg-white shadow-[0_0_0_1px_rgba(0,0,0,0.15)]"
+      class="absolute inset-y-0 w-1 -translate-x-1/2 bg-white shadow-[0_0_0_4px_rgba(251,251,254,0.4)]"
       style="left: var(--pos)"
     >
     </div>
 
-    <!-- Handle con flechas -->
+    <!-- Handle circular con manija de dos barras -->
     <div
-      class="cmp-handle absolute top-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-seco-blue shadow-lg ring-1 ring-black/5"
+      class="cmp-handle absolute top-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-[0_8px_20px_-6px_rgba(19,33,140,0.5)]"
       style="left: var(--pos)"
     >
-      <svg
-        class="h-5 w-5"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        aria-hidden="true"
-      >
-        <path d="M9 6l-4 6 4 6M15 6l4 6-4 6"></path>
-      </svg>
+      <span class="h-3.5 w-3.5 border-l-2 border-r-2 border-seco-blue"></span>
     </div>
   </div>
 </div>

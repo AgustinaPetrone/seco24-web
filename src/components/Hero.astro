@@ -1,81 +1,52 @@
 ---
-import { Image } from 'astro:assets';
 import CtaWhatsApp from './CtaWhatsApp.astro';
-import heroImg from '../assets/trabajos/trabajo1-despues.webp';
 import { ZONA } from '../consts';
 ---
 
-<section class="relative overflow-hidden bg-seco-blue text-white">
-  <!-- textura sutil de fondo -->
+<section class="relative overflow-hidden">
+  <!-- Blobs decorativos difuminados -->
   <div
-    class="pointer-events-none absolute inset-0 opacity-[0.07]"
-    style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 22px 22px;"
+    class="pointer-events-none absolute -right-40 -top-32 h-[520px] w-[520px] rounded-full blur-2xl"
+    style="background: radial-gradient(circle at 30% 30%, #cbd6f6, #e8eefb);"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute -left-36 bottom-10 h-96 w-96 rounded-full opacity-70 blur-[60px]"
+    style="background: #f1ece4;"
     aria-hidden="true"
   >
   </div>
 
-  <div
-    class="relative mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 md:grid-cols-2 md:py-24"
-  >
-    <div>
+  <div class="relative z-10 mx-auto max-w-6xl px-4 py-20 md:px-6 md:py-28">
+    <div class="max-w-4xl">
       <p
-        class="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-sm font-medium text-white/90 ring-1 ring-white/15"
+        class="mb-5 text-sm font-bold uppercase tracking-[0.06em] text-seco-blue"
       >
-        <span class="h-2 w-2 rounded-full bg-[#25D366]"></span>
-        Placas antihumedad · {ZONA}
+        Placas de yeso antihumedad · {ZONA}
       </p>
 
-      <h1 class="text-4xl font-extrabold leading-[1.1] tracking-tight sm:text-5xl">
-        Tu pared con humedad,<br class="hidden sm:block" />
-        <span
-          class="underline decoration-white/30 decoration-4 underline-offset-4 sm:decoration-[6px] sm:underline-offset-[6px]"
-        >
-          resuelta en 24 horas.
-        </span>
+      <h1
+        class="font-display text-4xl font-black leading-[1.03] tracking-tight text-seco-dark sm:text-5xl md:text-6xl lg:text-[68px]"
+      >
+        Tu pared con humedad,{' '}<br class="hidden sm:block" />resuelta en{' '}
+        <span class="text-seco-blue">24 horas.</span>
       </h1>
 
-      <p class="mt-6 max-w-xl text-lg leading-relaxed text-white/85">
+      <p class="mt-7 max-w-xl text-lg leading-relaxed text-seco-gray sm:text-xl">
         Colocamos placas de yeso decorativas que cubren y tratan la humedad de tu
         pared. Sin obra, sin escombros, y con un acabado que transforma el ambiente.
       </p>
 
-      <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-        <CtaWhatsApp variant="white" />
+      <div class="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
+        <CtaWhatsApp />
         <a
           href="#trabajos"
-          class="inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-base font-semibold text-white ring-1 ring-white/30 transition-colors hover:bg-white/10"
+          class="inline-flex items-center justify-center gap-1.5 px-2 text-base font-bold text-seco-dark transition-colors hover:text-seco-blue"
         >
           Ver trabajos realizados
-          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-            <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"></path>
-          </svg>
+          <span aria-hidden="true">→</span>
         </a>
-      </div>
-    </div>
-
-    <div class="relative">
-      <div class="overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10">
-        <Image
-          src={heroImg}
-          alt="Pared tratada con placas de yeso símil ladrillo, seca y renovada"
-          widths={[400, 800, 1200]}
-          sizes="(max-width: 768px) 90vw, 560px"
-          class="h-full w-full object-cover"
-          loading="eager"
-          fetchpriority="high"
-        />
-      </div>
-      <div
-        class="absolute -bottom-4 -left-4 flex items-center gap-3 rounded-xl bg-white px-4 py-3 text-seco-blue shadow-lg"
-      >
-        <svg class="h-8 w-8 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <circle cx="12" cy="13" r="8"></circle>
-          <path d="M12 9v4l2.5 1.5M12 5V2M9 2h6" stroke-linecap="round" stroke-linejoin="round"></path>
-        </svg>
-        <div class="leading-tight">
-          <p class="text-2xl font-extrabold">24 h</p>
-          <p class="text-xs font-medium text-seco-gray">y tu pared queda lista</p>
-        </div>
       </div>
     </div>
   </div>
