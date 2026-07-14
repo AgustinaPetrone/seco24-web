@@ -39,10 +39,105 @@ const links = [
       href={WHATSAPP_URL}
       target="_blank"
       rel="noopener noreferrer"
-      class="rounded-full bg-seco-blue px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-seco-blue-dark"
+      class="hidden rounded-full bg-seco-blue px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-seco-blue-dark md:inline-block"
     >
-      <span class="hidden sm:inline">Pedir presupuesto</span>
-      <span class="sm:hidden">Presupuesto</span>
+      Pedir presupuesto
     </a>
+
+    <!-- Botón hamburguesa (solo mobile) -->
+    <button
+      type="button"
+      data-menu-toggle
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      class="menu-btn -mr-2 inline-flex h-11 w-11 items-center justify-center rounded-lg text-seco-dark md:hidden"
+    >
+      <svg class="icon-open h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h16"></path>
+      </svg>
+      <svg class="icon-close h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Menú desplegable (mobile) -->
+  <div
+    id="mobile-menu"
+    data-menu-panel
+    class="absolute left-0 right-0 top-full hidden border-b border-seco-blue/10 bg-seco-bg shadow-lg md:hidden"
+  >
+    <nav class="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-4" aria-label="Navegación">
+      {
+        links.map((l) => (
+          <a
+            href={l.href}
+            class="rounded-lg px-3 py-3 text-base font-semibold text-seco-dark transition-colors hover:bg-seco-blue-ice"
+          >
+            {l.label}
+          </a>
+        ))
+      }
+      <a
+        href={WHATSAPP_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-2 rounded-full bg-seco-blue px-5 py-3.5 text-center text-base font-bold text-white"
+      >
+        Pedí tu presupuesto por WhatsApp
+      </a>
+    </nav>
   </div>
 </header>
+
+<style>
+  .menu-btn .icon-close {
+    display: none;
+  }
+  .menu-btn[aria-expanded='true'] .icon-open {
+    display: none;
+  }
+  .menu-btn[aria-expanded='true'] .icon-close {
+    display: block;
+  }
+</style>
+
+<script>
+  function initMenu() {
+    const btn = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+    const panel = document.querySelector<HTMLElement>('[data-menu-panel]');
+    if (!btn || !panel || btn.dataset.ready) return;
+    btn.dataset.ready = '1';
+
+    const setOpen = (open: boolean) => {
+      btn.setAttribute('aria-expanded', String(open));
+      btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      panel.classList.toggle('hidden', !open);
+    };
+
+    btn.addEventListener('click', () =>
+      setOpen(btn.getAttribute('aria-expanded') !== 'true'),
+    );
+    // cerrar al tocar un link (navega y cierra)
+    panel.querySelectorAll('a').forEach((a) =>
+      a.addEventListener('click', () => setOpen(false)),
+    );
+    // cerrar con Escape o al tocar fuera
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') setOpen(false);
+    });
+    document.addEventListener('click', (e) => {
+      const t = e.target as Node;
+      if (
+        btn.getAttribute('aria-expanded') === 'true' &&
+        !panel.contains(t) &&
+        !btn.contains(t)
+      ) {
+        setOpen(false);
+      }
+    });
+  }
+  initMenu();
+  document.addEventListener('astro:page-load', initMenu);
+</script>
