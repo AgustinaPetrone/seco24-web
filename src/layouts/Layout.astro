@@ -108,8 +108,8 @@ const jsonLd = {
 
   html {
     scroll-behavior: smooth;
-    /* compensar el header fijo al saltar a anclas */
-    scroll-padding-top: 5rem;
+    /* el offset al saltar a anclas lo da el `scroll-mt-*` de cada sección
+       (no duplicar acá con scroll-padding-top: se sumaban y quedaba muy abajo) */
   }
 
   body {
