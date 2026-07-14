@@ -4,6 +4,8 @@ import t1antes from '../assets/trabajos/trabajo1-antes.webp';
 import t1despues from '../assets/trabajos/trabajo1-despues.webp';
 import t2antes from '../assets/trabajos/trabajo2-antes.webp';
 import t2despues from '../assets/trabajos/trabajo2-despues.webp';
+import t3antes from '../assets/trabajos/trabajo3-antes.webp';
+import t3despues from '../assets/trabajos/trabajo3-despues.webp';
 ---
 
 <section id="trabajos" class="scroll-mt-24 py-20 md:py-28" data-antes>
@@ -28,6 +30,9 @@ import t2despues from '../assets/trabajos/trabajo2-despues.webp';
       <button type="button" class="ad-tab" role="tab" aria-selected="false" data-tab="1">
         Puerta
       </button>
+      <button type="button" class="ad-tab" role="tab" aria-selected="false" data-tab="2">
+        Dormitorio
+      </button>
     </div>
 
     <div class="mx-auto mt-8 max-w-3xl">
@@ -47,6 +52,15 @@ import t2despues from '../assets/trabajos/trabajo2-despues.webp';
           antesAlt="Pared junto a una puerta con humedad antes del tratamiento"
           despuesAlt="La misma pared junto a la puerta, renovada con placas de yeso"
           sizes="(max-width: 768px) 92vw, 480px"
+        />
+      </div>
+      <div data-panel="2" hidden>
+        <CompareSlider
+          antes={t3antes}
+          despues={t3despues}
+          antesAlt="Pared de dormitorio con humedad bajo la ventana antes del tratamiento"
+          despuesAlt="La misma pared del dormitorio renovada con placas de yeso"
+          sizes="(max-width: 768px) 92vw, 760px"
         />
       </div>
     </div>
