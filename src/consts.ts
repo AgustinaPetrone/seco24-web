@@ -17,3 +17,7 @@ export const SITE_TITLE =
   'Seco24 — Tratamiento de humedad en paredes con placas de yeso | Montevideo';
 export const SITE_DESCRIPTION =
   'Eliminá las manchas de humedad de tu pared con placas de yeso decorativas. Sin obra, sin escombros y con el trabajo listo en 24 horas. Pedí tu presupuesto por WhatsApp.';
+
+// PostHog (analytics). La project API key va en el cliente y es pública (no es secreta).
+export const POSTHOG_KEY = 'phc_ydFKC3rqJ7uibSESdFGD2QgVFXT2jhpUEZebCAuNmvaY';
+export const POSTHOG_HOST = 'https://us.i.posthog.com';
