@@ -149,13 +149,16 @@ const jsonLd = {
           person_profiles: "identified_only",
           disable_session_recording: true,
         });
-        // Evento de conversión: click en cualquier botón/link de WhatsApp
+        // Eventos: click en botones de WhatsApp ("pidió presupuesto") o Instagram
         document.addEventListener("click", function (e) {
-          var a = e.target.closest && e.target.closest('a[href*="wa.me"]');
-          if (a && window.posthog && window.posthog.capture) {
-            window.posthog.capture("pidio_presupuesto", {
-              ubicacion: a.getAttribute("data-loc") || "otro",
-            });
+          var a = e.target.closest && e.target.closest("a[href]");
+          if (!a || !window.posthog || !window.posthog.capture) return;
+          var href = a.getAttribute("href") || "";
+          var ubicacion = a.getAttribute("data-loc") || "otro";
+          if (href.indexOf("wa.me") > -1) {
+            window.posthog.capture("pidio_presupuesto", { ubicacion: ubicacion });
+          } else if (href.indexOf("instagram.com") > -1) {
+            window.posthog.capture("click_instagram", { ubicacion: ubicacion });
           }
         });
       }
