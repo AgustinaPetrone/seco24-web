@@ -5,12 +5,14 @@ interface Props {
   label?: string;
   variant?: 'primary' | 'white';
   class?: string;
+  loc?: string;
 }
 
 const {
   label = 'Pedí tu presupuesto por WhatsApp',
   variant = 'primary',
   class: extra = '',
+  loc,
 } = Astro.props;
 
 const base =
@@ -27,6 +29,7 @@ const variants = {
   href={WHATSAPP_URL}
   target="_blank"
   rel="noopener noreferrer"
+  data-loc={loc}
   class={`${base} ${variants[variant]} ${extra}`}
 >
   {label}
